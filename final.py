@@ -35,20 +35,16 @@ X_test_2024=np.delete(X_test_2024,[0,1,2,4,5,10,37,38],axis=1)
 #final_model.fit(X,y)
 
 X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.2, random_state=33)
-# 建立 XGBClassifier 模型
-#xgboostModel = XGBClassifier(n_estimators=500, learning_rate= 0.01,n_jobs=-1,random_state=33,max_depth=4,min_child_weight=1, subsample=0.8,colsample_bytree=0.8)
+# 建立 rf 模型
 rfmodel=RandomForestClassifier(n_estimators=1000,n_jobs=-1,max_depth=4,max_features='log2',min_samples_leaf=1,min_samples_split=2,random_state=10)
 # 使用訓練資料訓練模型
-#xgboostModel.fit(X_train, y_train)
 rfmodel.fit(X_train,y_train)
 # 使用訓練資料預測分類
-#predicted = xgboostModel.predict(X_val)
 predicted = rfmodel.predict(X_val)
-#score=xgboostModel.score(X_val,y_val)
 score=rfmodel.score(X_val,y_val)
 print(score)
 #### stage 1
-'''
+
 y_test_predict=final_model.predict(X_test)
 
 print(len(y_test_predict))
@@ -64,7 +60,7 @@ df = pd.DataFrame({'id': ids, 'home_team_win': data_replaced})
 # 將 DataFrame 保存為 CSV 檔案
 output_path = 'new_same_season_output.csv'
 df.to_csv(output_path, index=False)
-'''
+
 
 #### stage 2
 
