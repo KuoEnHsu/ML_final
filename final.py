@@ -4,7 +4,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import mean_squared_error
-from xgboost import XGBClassifier
 
 # 讀取資料
 train_data = pd.read_csv('stage1data/preprocessed_train_features.csv')
